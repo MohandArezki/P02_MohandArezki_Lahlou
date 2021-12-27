@@ -5,5 +5,5 @@ OpenClassrooms Formation Développeur d'application - Python (Projet 02)
 python3 -m venv env
 # activation de l'environnement
 source env/bin/activate
-# installaltion beautifulsoup4
-pip install beautifulsoup4
+# installaltion requests,beautifulsoup4,lxml
+pip install requests,beautifulsoup4
