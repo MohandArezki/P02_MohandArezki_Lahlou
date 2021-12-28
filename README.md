@@ -8,8 +8,7 @@ pip install -r requirements.txt
 # activation de l'environnement
 source env/bin/activate
 
-# accéder au dossier one_book 
-# recuperation de données d'une seul livre
+# accéder au dossier one_book & recuperation de données d'une seul livre
 cd one_book
 
 # installer les packages necessaires
