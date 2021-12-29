@@ -12,11 +12,10 @@
 
 ## <a id="obtenir-le-code-source" />Obtenir le code source
 
-  Vous pouvez obtenir le code source en téléchargeant https://github.com/MohandArezki/OC_DevPython_P2/archive/refs/heads/dev.zip
+  Vous pouvez obtenir le code source en téléchargeant https://github.com/MohandArezki/OC_DevPython_P2.git
 Ou vous pouvez cloner le référentiel avec la commande suivante :
 
       git clone -git@github.com:MohandArezki/OC_DevPython_P2.git
-
   [Home](#contenu)
 
 ## <a id="creer-l-environnement-virtuel" />Créer l environnement virtuel
