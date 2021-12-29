@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# OC_DevPython_P2
-=======
 # OpenClassrooms Formation Développeur d'application - Python (Projet 02)
 
 
@@ -52,4 +49,3 @@ Ou vous pouvez cloner le référentiel avec la commande suivante :
       pyhon scrap.py
 
 [Home](#contenu)
->>>>>>> dev
