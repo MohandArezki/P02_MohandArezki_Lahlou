@@ -49,4 +49,3 @@ Ou vous pouvez cloner le référentiel avec la commande suivante :
       pyhon scrap.py
 
 [Home](#contenu)
->>>>>>> dev
