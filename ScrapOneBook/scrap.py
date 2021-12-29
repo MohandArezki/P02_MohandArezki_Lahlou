@@ -108,9 +108,8 @@ def get_img(url_img,name_img):
     with open(name_img, 'wb') as f:
         f.write(requests.get(url_img).content)
 
-def main():
+def main(url_page):
     url_site = 'http://books.toscrape.com'   
-    url_page = 'http://books.toscrape.com/catalogue/tipping-the-velvet_999/index.html'
     books = []
     # Récuperation des données sur le livre
     books.append(get_data(url_page))
@@ -121,4 +120,4 @@ def main():
     get_img(books[0].get("image_url"),books[0].get("title"))
 
 if __name__== '__main__':
-    main()
+    main('http://books.toscrape.com/catalogue/tipping-the-velvet_999/index.html')
