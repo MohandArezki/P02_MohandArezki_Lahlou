@@ -1,14 +1,12 @@
 # OpenClassrooms Formation Développeur d'application - Python (Projet 02)
-
-
  ## Contenu
 
   - [Obtenir le code source](#obtenir-le-code-source)
   - [Créer l environnement virtuel](#creer-l-environnement-virtuel)
   - [Activer l'environnement virtuel](#activer-l-environnement-virtuel)
   - [Installer les pré-requis](#installer-les-pre-requis)
-  - [Accés au dossier ScrapOneBook/](#acces-au-dossier-scraponekook)
-  - [Exécuter le programme](#executer-le-programme)
+  - [Exécuter le programme [ScrapeOneBook.py] pour récupérer les données d'un seul livre](#executer-le-programme-scrapeonebook.py)
+  - [Exécuter le programme [ScrapeAllBook.py] pour récupérer les données de tout le catalogue.](#executer-le-programme-scrapeonebook.py)
 
 ## <a id="obtenir-le-code-source" />Obtenir le code source
 
@@ -37,14 +35,20 @@ Ou vous pouvez cloner le référentiel avec la commande suivante :
 
 [Home](#contenu)
 
-## <a id="acces-au-dossier-scraponekook"/> Accés au dossier ScrapOneBook/
 
-      cd ScrapOneBook
+## <a id="executer-le-programme-scrapeonebook.py"/> Exécuter le programme pour récuperer les données d'un seul livre
 
+      pyhon ScrapeOneBook.py
+
+      les resultats seront sauvegardés dans un dossier book/
+      
 [Home](#contenu)
 
-## <a id="executer-le-programme"/> Exécuter le programme
 
-      pyhon scrap.py
+## <a id="executer-le-programme-scrapeallbooks.py"/> Exécuter le programme pour récuperer toutes les données du catalogue
+
+      pyhon ScrapeAllBooks.py
+
+      les resultats seront sauvegardés dans un dossier books/
 
 [Home](#contenu)
