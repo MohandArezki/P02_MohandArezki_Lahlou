@@ -33,7 +33,7 @@ def getData(url):
     if html_brut.ok:
         
         # Parser le code source enregistré dans html_brut : Changer le format de HTML vers un format facilement comprehensible par Python
-        soup = BeautifulSoup(html_brut.content,'lxml')
+        soup = BeautifulSoup(html_brut.content,'html.parser')
 
         # on recupére les données dans un dictionnaire
         results= {"product_page_url":"",
