@@ -22,7 +22,6 @@ from bs4 import BeautifulSoup
 
 URL_PAGE = 'http://books.toscrape.com/catalogue/tipping-the-velvet_999/index.html'
 URL_SITE = 'http://books.toscrape.com/'   
-FOLDER_DATA = 'book/'
 
     
 def getData(url):
