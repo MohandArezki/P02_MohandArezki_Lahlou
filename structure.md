@@ -3772,8 +3772,3 @@ manifest.xml](data//env/lib/python3.8/site-packages/setuptools/command/launcher%
 \
 
 ------------------------------------------------------------------------
-
-tree v1.8.0 © 1996 - 2018 by Steve Baker and Thomas Moore\
-HTML output hacked and copyleft © 1998 by Francesc Rocher\
-JSON output hacked and copyleft © 2014 by Florian Sesser\
-Charsets / OS/2 support © 2001 by Kyosuke Tokoro
