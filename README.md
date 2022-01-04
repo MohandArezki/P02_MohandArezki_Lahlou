@@ -8,7 +8,7 @@
   - [Exécuter le programme [ScrapeBook.py] pour récupérer les données d'un livre](#executer-le-programme-scrapebook.py)
   - [Exécuter le programme [ScrapeCategory.py] pour récupérer les données d'une catégorie.](#executer-le-programme-scrapcategory.py)
   - [Exécuter le programme [ScrapeSite.py] pour récupérer les données de tout le site.](#executer-le-programme-scrapesite.py)
-  - [Structure du resultat ](structure.html)
+  - [Structure du resultat ](structure.md)
 ## <a id="obtenir-le-code-source" />Obtenir le code source
 
   Vous pouvez obtenir le code source en téléchargeant https://github.com/MohandArezki/OC_DevPython_P2.git
