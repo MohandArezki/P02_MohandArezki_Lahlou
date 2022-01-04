@@ -3,8 +3,6 @@ import requests,csv, os
 from slugify import slugify 
 from bs4 import BeautifulSoup
 
-#Quelques constantes
-
 URL_SITE = 'http://books.toscrape.com/'
 
 # Une classe de simulation d'un livre.
@@ -29,10 +27,10 @@ class Book:
         # Pour savoir si un contenu a était renvoyé, on peut tester html_brut.ok  Ou html_brut.status_code = 200 
         # Parser le code source enregistré dans html_brut : Changer le format de HTML vers un format facilement comprehensible par Python
         bookSoup = BeautifulSoup(html_brut.content,'html.parser')
-        # on recupére les données dans un dictionnaire
+        # recupérer les données dans un dictionnaire
         # URL de l'image
         self.data['image_url']= requests.compat.urljoin(URL_SITE, bookSoup.findAll('img')[0].attrs['src'])
-        # on recupere les elements de la liste [breadcrumb]
+        # recuperer les elements de la liste [breadcrumb]
         list = bookSoup.find('ul', attrs={'class':'breadcrumb'})
         self.data['category'] = list.find_all('a')[2].string 
         # dans la classe [col-sm-6 product_main] et dans le tag [h1] 
@@ -56,22 +54,22 @@ class Book:
     def saveImage(self,folder):
         # generer un nom de dossier valide a partir du nom de la categorie
         folder = folder+slugify(self.data['category'])+'/'
-        # on crée  le dossier s'il n'existe pas
+        # créer  le dossier s'il n'existe pas
         os.makedirs(folder, exist_ok=True)
         # generer un nom valide pour le fichier image (le nom du produit comme nom d'image)
         with open(folder+slugify(self.data['title'])+".jpg", 'wb') as f:
-            #telecharger l'image
+            # telecharger l'image
             f.write(requests.get(self.data['image_url']).content)
 
     
     def saveData(self,folder):
         os.makedirs(folder, exist_ok=True)
-        # Crée un objet  (f) pour le fichier csv       
+        # Créer un objet  (f) pour le fichier csv       
         csvFile=folder+'/file.csv'
         if not os.path.isfile(csvFile): 
             with open(csvFile, 'w') as f:
                 # Passer l'objet (f) à la fonction Dictwriter()pour récuperer un objet DictWriter (writer)
-                 # les nom des champs sont les clés du dictionnaire sel.data
+                # les nom des champs sont les clés du dictionnaire sel.data
                 writer = csv.DictWriter(f, fieldnames = self.data.keys())
                 # créer l'entete
                 writer.writeheader()
@@ -88,7 +86,7 @@ class Book:
 def main():
 
     FOLDER_BASE = 'data/book/'
-    # on recupere les informations du livre, on créant un objet (book) de type (Book) 
+    # recuperer les informations du livre, on créant un objet (book) de type (Book) 
     # avec comme paramétre d'entrée l'URL de la page du livre
     URL_BOOK = URL_SITE+'/catalogue/tipping-the-velvet_999/index.html'
     book=Book(URL_BOOK)
@@ -96,7 +94,7 @@ def main():
     # exporter les données du livre vers un fichier csv
     book.saveData(FOLDER_BASE)
  
-    # on recupere l'image
+    # recuperer l'image
     book.saveImage(FOLDER_BASE)
 
     

@@ -1,23 +1,23 @@
 from ScrapeBook import *
+
 # Une classe de simulation d'une categorie.
 # une catégorie est caractérisée par :
 # - Une URL (page_url)
 # - Une liste de livres (books)
 # - Un Nom (name)
-#  
 class Category:
     def __init__(self,categoryPageUrl):
         URL_CATALOG = URL_SITE + 'catalogue/'
         self.page_url = categoryPageUrl
         self.books = []        
         index = 1
-        #on commence par la premiere page de chaque catégorie (index.html)
+        # commencer par la premiere page de chaque catégorie (index.html)
         currentPage = 'index.html'
-        #on recupére le contenu brut de la page 
+        # recupérer le contenu brut de la page 
         htmlCategory = requests.get(self.page_url+currentPage)
-        # on "parse" le contenu recuperer. rendre plus comprehensible le contenu recuperer par python 
+        # "parser" le contenu recuperer. rendre plus comprehensible le contenu recuperer par python 
         soupCategory = BeautifulSoup(htmlCategory.content,'html.parser')
-        # on recupere le nom de la catgorie, qui est le titre de niveau 1 de la classe "page-header action"
+        # recuperer le nom de la catgorie, qui est le titre de niveau 1 de la classe "page-header action"
         self.name = soupCategory.find(class_='page-header action').h1.text   
         doIt= True
         
@@ -27,10 +27,10 @@ class Category:
             # de la classe "col-xs-6 col-sm-4 col-md-3 col-lg-3" sous forme d'une liste
             booksPage = soupCategory.find_all("li","col-xs-6 col-sm-4 col-md-3 col-lg-3")
             for book in booksPage:
-                #récuperer le lien de la page du livre = URL_CATALOG + la valeur de l'attribut  "href" de l'element HTML "<a>"
-                #enlever les 9 premiers caractéres pour reconstituer l'url 
+                # récuperer le lien de la page du livre = URL_CATALOG + la valeur de l'attribut  "href" de l'element HTML "<a>"
+                # enlever les 9 premiers caractéres pour reconstituer l'url 
                 aBook = Book(URL_CATALOG+book.h3.a["href"][9:])
-                #ajouter le livre dans la liste
+                # ajouter le livre dans la liste
                 self.books.append(aBook)
             index +=1
             currentPage = 'page-'+str(index)+'.html'
@@ -41,32 +41,32 @@ class Category:
         return 
     
     def getData(self):
-        #on parcopur tout les livres de la liste 
+        # parcopurir tout les livres de la liste 
         data = []
         for book in self.books:
-                #on recupere les données de chaque livre 
+                # recuperer les données de chaque livre 
                 data.append(book.data)
         return data
     
     def saveImage(self,folder):
-        # on parcours la liste des livres de la categorie (contenu dans self.books)
+        # parcourir la liste des livres de la categorie (contenu dans self.books)
         for book in self.books:
-            # on recupere l'image de chaque livre de la liste
+            # recuperer l'image de chaque livre de la liste
             book.saveImage(folder)
         return     
     
     def saveData(self,folder):
-        # on parcours la liste des livres de la categorie (contenu dans self.books)
+        # parcourir la liste des livres de la categorie (contenu dans self.books)
         for book in self.books:
-            # on ajoute les données de chaque livre de la liste dans le csv
+            # ajouter les données de chaque livre de la liste dans le csv
             book.saveData(folder)
         return 
 def main():
 
     FOLDER_BASE = 'data/Category/'
 
-    # on recupere les informations de la categorie, on créant un objet (book) de type (Book) 
-    # avec comme paramétre d'entrée l'URL de la page du livre
+    # on recupere les informations de la categorie, on créant un objet (category) de type (Category) 
+    # avec comme paramétre d'entrée l'URL de la page de la categorie
     URL_CATEGORY = URL_SITE + 'catalogue/category/books/mystery_3/'   
     category = Category(URL_CATEGORY)
 
