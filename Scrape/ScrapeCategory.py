@@ -39,7 +39,7 @@ class Category:
             htmlCategory = requests.get(self.page_url+currentPage)
             soupCategory = BeautifulSoup(htmlCategory.content,'html.parser')
         return 
-    
+    # methode pour recuperer les données des livres        
     def getData(self):
         # parcopurir tout les livres de la liste 
         data = []
@@ -47,7 +47,8 @@ class Category:
                 # recuperer les données de chaque livre 
                 data.append(book.data)
         return data
-    
+
+    # methode pour recuperer les images des livres        
     def saveImage(self,folder):
         # parcourir la liste des livres de la categorie (contenu dans self.books)
         for book in self.books:
@@ -55,26 +56,25 @@ class Category:
             book.saveImage(folder)
         return     
     
+    # methode pour exporter les données des livres dans un csv
     def saveData(self,folder):
         # parcourir la liste des livres de la categorie (contenu dans self.books)
         for book in self.books:
             # ajouter les données de chaque livre de la liste dans le csv
             book.saveData(folder)
         return 
+
 def main():
-
     FOLDER_BASE = 'data/Category/'
-
     # on recupere les informations de la categorie, on créant un objet (category) de type (Category) 
     # avec comme paramétre d'entrée l'URL de la page de la categorie
     URL_CATEGORY = URL_SITE + 'catalogue/category/books/mystery_3/'   
     category = Category(URL_CATEGORY)
-
     # exporter les données de la catéggorie dans un fichier csv
     category.saveData(FOLDER_BASE)
-  
     #on recupere les images
     category.saveImage(FOLDER_BASE)
+    return
    
 if __name__== '__main__':
     main()

@@ -50,7 +50,8 @@ class Book:
         # 7iéme balise td, Number of reviews     
         self.data['review_rating'] = table.find_all('td')[6].string
         return
-
+    
+    # methode pour recuperer les images du livre        
     def saveImage(self,folder):
         # generer un nom de dossier valide a partir du nom de la categorie
         folder = folder+slugify(self.data['category'])+'/'
@@ -60,8 +61,8 @@ class Book:
         with open(folder+slugify(self.data['title'])+".jpg", 'wb') as f:
             # telecharger l'image
             f.write(requests.get(self.data['image_url']).content)
-
     
+    # methode pour exporter les données d'un livre dans un csv
     def saveData(self,folder):
         os.makedirs(folder, exist_ok=True)
         # Créer un objet  (f) pour le fichier csv       
@@ -74,7 +75,6 @@ class Book:
                 # créer l'entete
                 writer.writeheader()
             f.close()    
-        
         with open(csvFile, 'a') as f:
             # Passer l'objet (f) à la fonction Dictwriter()pour récuperer un objet DictWriter (writer)
             # les nom des champs sont les clés du dictionnaire sel.data
@@ -84,19 +84,16 @@ class Book:
         f.close()    
 
 def main():
-
     FOLDER_BASE = 'data/book/'
     # recuperer les informations du livre, on créant un objet (book) de type (Book) 
     # avec comme paramétre d'entrée l'URL de la page du livre
     URL_BOOK = URL_SITE+'/catalogue/tipping-the-velvet_999/index.html'
     book=Book(URL_BOOK)
-     
     # exporter les données du livre vers un fichier csv
     book.saveData(FOLDER_BASE)
- 
     # recuperer l'image
     book.saveImage(FOLDER_BASE)
-
-    
+    return 
+      
 if __name__== '__main__':
     main()
