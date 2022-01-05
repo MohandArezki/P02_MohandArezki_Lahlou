@@ -23,9 +23,6 @@ Ou vous pouvez cloner le référentiel avec la commande suivante :
 
   [Home](#contenu)
 
-## <a id="capture-ecran-du-resulat" />Capture écran du resulat
-![stack Overflow](http://lmsotfy.com/so.png)
-
 ## <a id="activer-l-environnement-virtuel" /> Activer l'environnement virtuel
 
       source env/bin/activate
