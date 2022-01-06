@@ -84,13 +84,13 @@ class Book:
         return
         
 def main():
-    FOLDER_BASE = 'data/book/'
+    baseFolder = 'data/book/'
     # recuperer les informations du livre, on créant un objet (book) de type (Book) 
     # avec comme paramétre d'entrée l'URL de la page du livre
-    URL_BOOK = URL_SITE+'/catalogue/tipping-the-velvet_999/index.html'
-    book=Book(URL_BOOK)
+    UrlBook = URL_SITE+'/catalogue/tipping-the-velvet_999/index.html'
+    book=Book(UrlBook)
     # exporter les données et l image du livre 
-    book.saveData(FOLDER_BASE)
+    book.saveData(baseFolder)
     return 
       
 if __name__== '__main__':
