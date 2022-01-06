@@ -8,6 +8,7 @@ from ScrapeBook import *
 class Category:
     def __init__(self,categoryPageUrl):
         URL_CATALOG = URL_SITE + 'catalogue/'
+        FOLDER_BASE = 'data/Category/'
         self.page_url = categoryPageUrl
         self.books = []        
         index = 1
@@ -22,7 +23,6 @@ class Category:
         doIt= True
         
         while doIt:
-            print('Récuperation des données. Catégorie ('+self.name+') .Page: '+str(index))
             # recuperer les livres de la page en cours, on recuperant la valeur de l'attribut "href"  du titre niveau 3 de 
             # de la classe "col-xs-6 col-sm-4 col-md-3 col-lg-3" sous forme d'une liste
             booksPage = soupCategory.find_all("li","col-xs-6 col-sm-4 col-md-3 col-lg-3")
@@ -30,6 +30,7 @@ class Category:
                 # récuperer le lien de la page du livre = URL_CATALOG + la valeur de l'attribut  "href" de l'element HTML "<a>"
                 # enlever les 9 premiers caractéres pour reconstituer l'url 
                 aBook = Book(URL_CATALOG+book.h3.a["href"][9:])
+                aBook.saveData(FOLDER_BASE)
                 # ajouter le livre dans la liste
                 self.books.append(aBook)
             index +=1
@@ -39,41 +40,12 @@ class Category:
             htmlCategory = requests.get(self.page_url+currentPage)
             soupCategory = BeautifulSoup(htmlCategory.content,'html.parser')
         return 
-    # methode pour recuperer les données des livres        
-    def getData(self):
-        # parcopurir tout les livres de la liste 
-        data = []
-        for book in self.books:
-                # recuperer les données de chaque livre 
-                data.append(book.data)
-        return data
-
-    # methode pour recuperer les images des livres        
-    def saveImage(self,folder):
-        # parcourir la liste des livres de la categorie (contenu dans self.books)
-        for book in self.books:
-            # recuperer l'image de chaque livre de la liste
-            book.saveImage(folder)
-        return     
     
-    # methode pour exporter les données des livres dans un csv
-    def saveData(self,folder):
-        # parcourir la liste des livres de la categorie (contenu dans self.books)
-        for book in self.books:
-            # ajouter les données de chaque livre de la liste dans le csv
-            book.saveData(folder)
-        return 
-
 def main():
-    FOLDER_BASE = 'data/Category/'
     # on recupere les informations de la categorie, on créant un objet (category) de type (Category) 
     # avec comme paramétre d'entrée l'URL de la page de la categorie
     URL_CATEGORY = URL_SITE + 'catalogue/category/books/mystery_3/'   
     category = Category(URL_CATEGORY)
-    # exporter les données de la catéggorie dans un fichier csv
-    category.saveData(FOLDER_BASE)
-    #on recupere les images
-    category.saveImage(FOLDER_BASE)
     return
    
 if __name__== '__main__':

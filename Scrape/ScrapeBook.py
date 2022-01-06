@@ -51,20 +51,21 @@ class Book:
         self.data['review_rating'] = table.find_all('td')[6].string
         return
     
-    # methode pour recuperer les images du livre        
-    def saveImage(self,folder):
-        # generer un nom de dossier valide a partir du nom de la categorie
+    # methode pour recuperer les images du livre Et        
+    # exporter les données d'un livre dans un csv
+    def saveData(self,folder):
+    
+        print('Récuperation des données. Catégorie : ('+self.data['category']+')/Livre :'+self.data['title'])
+        #generation de la structure dossier + dossier pour les Images
         folder = folder+slugify(self.data['category'])+'/'
-        # créer  le dossier s'il n'existe pas
         os.makedirs(folder, exist_ok=True)
-        # generer un nom valide pour le fichier image (le nom du produit comme nom d'image)
+        # generer un nom de dossier pour les images valide a partir du nom de la categorie
+        # generer un nom valide pour le fichier image (le nom du produit comme nom d'image) 
+        #Créer un objet  (f) pour le fichier image
         with open(folder+slugify(self.data['title'])+".jpg", 'wb') as f:
             # telecharger l'image
             f.write(requests.get(self.data['image_url']).content)
-    
-    # methode pour exporter les données d'un livre dans un csv
-    def saveData(self,folder):
-        os.makedirs(folder, exist_ok=True)
+
         # Créer un objet  (f) pour le fichier csv       
         csvFile=folder+'/file.csv'
         if not os.path.isfile(csvFile): 
@@ -82,7 +83,8 @@ class Book:
             # Passer  le dictionnaire self.data  comme paramétre de la fonction  writerow()
             writer.writerow(self.data)
         f.close()    
-
+        return
+        
 def main():
     FOLDER_BASE = 'data/book/'
     # recuperer les informations du livre, on créant un objet (book) de type (Book) 
@@ -91,8 +93,6 @@ def main():
     book=Book(URL_BOOK)
     # exporter les données du livre vers un fichier csv
     book.saveData(FOLDER_BASE)
-    # recuperer l'image
-    book.saveImage(FOLDER_BASE)
     return 
       
 if __name__== '__main__':

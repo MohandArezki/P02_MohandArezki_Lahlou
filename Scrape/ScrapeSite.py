@@ -25,15 +25,7 @@ class Site:
             category.append(category.getData())
         return data
     
-    # methode pour recuperer les images des livres        
-    def saveImages(self,folder):
-          # parcourir la liste des categories
-        for category in self.categories:
-            # recuperer les images de la categorie
-            category.saveImage(folder)
-        return     
-
-    # methode pour exporter les données des livres dans un csv
+    # methode pour exporter les données des livres et les images
     def saveData(self,folder):
         # parcourir la liste des categories
         for category in self.categories:
@@ -46,8 +38,6 @@ def main():
     site = Site()
     # exporter les données de la catéggorie dans un fichier csv
     site.saveData(FOLDER_BASE)
-    # recuperer les images
-    site.saveImages(FOLDER_BASE)
     return
 
 if __name__== '__main__':
