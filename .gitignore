@@ -1,3 +1,7 @@
+# ne pas inclure les données des livres
+Scrape/data/
+# ne pas inclure le dossier de l'environnement virtuel
+env/
 <<<<<<< HEAD
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -1,4 +1,4 @@
-
+# -*- coding: utf-8 -*-
 import requests,csv, os
 from slugify import slugify 
 from bs4 import BeautifulSoup
@@ -54,7 +54,6 @@ class Book:
     # methode pour recuperer les images du livre Et        
     # exporter les données d'un livre dans un csv
     def saveData(self,folder):
-    
         print('Récuperation des données. Catégorie : ('+self.data['category']+')/Livre :'+self.data['title'])
         #generation de la structure dossier + dossier pour les Images
         folder = folder+slugify(self.data['category'])+'/'
@@ -65,7 +64,6 @@ class Book:
         with open(folder+slugify(self.data['title'])+".jpg", 'wb') as f:
             # telecharger l'image
             f.write(requests.get(self.data['image_url']).content)
-
         # Créer un objet  (f) pour le fichier csv       
         csvFile=folder+'/file.csv'
         if not os.path.isfile(csvFile): 
@@ -91,7 +89,7 @@ def main():
     # avec comme paramétre d'entrée l'URL de la page du livre
     URL_BOOK = URL_SITE+'/catalogue/tipping-the-velvet_999/index.html'
     book=Book(URL_BOOK)
-    # exporter les données du livre vers un fichier csv
+    # exporter les données et l image du livre 
     book.saveData(FOLDER_BASE)
     return 
       
