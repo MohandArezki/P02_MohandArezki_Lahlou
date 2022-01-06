@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from ScrapeBook import *
 
-
 def GetDataCategory(urlPage,folder):
     index = 1
     # commencer par la premiere page de chaque catégorie (index.html)
