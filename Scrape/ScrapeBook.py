@@ -86,7 +86,7 @@ def main():
     FOLDER_BASE = 'data/book/'
     # recuperer les informations du livre, on créant un objet (book) de type (Book) 
     # avec comme paramétre d'entrée l'URL de la page du livre
-    URL_BOOK = URL_SITE+'/catalogue/tastes-like-fear-di-marnie-rome-3_742/index.html'
+    URL_BOOK = URL_SITE+'/catalogue/tipping-the-velvet_999/index.html'
     book=Book(URL_BOOK)
     # exporter les données du livre vers un fichier csv
     book.saveData(FOLDER_BASE)
