@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+
 import requests,csv, os
 from slugify import slugify 
 from bs4 import BeautifulSoup
@@ -67,30 +67,30 @@ class Book:
         # Créer un objet  (f) pour le fichier csv       
         csvFile=folder+'/file.csv'
         if not os.path.isfile(csvFile): 
-            with open(csvFile, 'w') as f:
+            with open(csvFile, 'w',encoding='utf8') as f:
                 # Passer l'objet (f) à la fonction Dictwriter()pour récuperer un objet DictWriter (writer)
                 # les nom des champs sont les clés du dictionnaire sel.data
-                writer = csv.DictWriter(f, fieldnames = self.data.keys())
                 # créer l'entete
+                writer = csv.DictWriter(f, fieldnames=self.data.keys())
                 writer.writeheader()
-            f.close()    
-        with open(csvFile, 'a') as f:
+
+        with open(csvFile, 'a',encoding='utf8') as f:
             # Passer l'objet (f) à la fonction Dictwriter()pour récuperer un objet DictWriter (writer)
             # les nom des champs sont les clés du dictionnaire sel.data
-            writer = csv.DictWriter(f, fieldnames = self.data.keys())
+            # writer = csv.DictWriter(f, fieldnames = self.data.keys())
+            writer = csv.DictWriter(f, fieldnames=self.data.keys())
             # Passer  le dictionnaire self.data  comme paramétre de la fonction  writerow()
             writer.writerow(self.data)
-        f.close()    
         return
         
 def main():
-    baseFolder = 'data/book/'
+    FOLDER_BASE = 'data/book/'
     # recuperer les informations du livre, on créant un objet (book) de type (Book) 
     # avec comme paramétre d'entrée l'URL de la page du livre
-    UrlBook = URL_SITE+'/catalogue/tipping-the-velvet_999/index.html'
-    book=Book(UrlBook)
-    # exporter les données et l image du livre 
-    book.saveData(baseFolder)
+    URL_BOOK = URL_SITE+'/catalogue/tipping-the-velvet_999/index.html'
+    book=Book(URL_BOOK)
+    # exporter les données du livre vers un fichier csv
+    book.saveData(FOLDER_BASE)
     return 
       
 if __name__== '__main__':
