@@ -73,7 +73,6 @@ class Book:
                 # créer l'entete
                 writer = csv.DictWriter(f, fieldnames=self.data.keys())
                 writer.writeheader()
-
         with open(csvFile, 'a',encoding='utf8') as f:
             # Passer l'objet (f) à la fonction Dictwriter()pour récuperer un objet DictWriter (writer)
             # les nom des champs sont les clés du dictionnaire sel.data
