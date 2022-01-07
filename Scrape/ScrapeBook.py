@@ -71,13 +71,13 @@ class Book:
                 # Passer l'objet (f) à la fonction Dictwriter()pour récuperer un objet DictWriter (writer)
                 # les nom des champs sont les clés du dictionnaire sel.data
                 # créer l'entete
-                writer = csv.DictWriter(f, fieldnames=self.data.keys())
+                writer = csv.DictWriter(f, fieldnames=self.data.keys(),quoting=csv.QUOTE_ALL)
                 writer.writeheader()
         with open(csvFile, 'a',encoding='utf8') as f:
             # Passer l'objet (f) à la fonction Dictwriter()pour récuperer un objet DictWriter (writer)
             # les nom des champs sont les clés du dictionnaire sel.data
             # writer = csv.DictWriter(f, fieldnames = self.data.keys())
-            writer = csv.DictWriter(f, fieldnames=self.data.keys())
+            writer = csv.DictWriter(f, fieldnames=self.data.keys(),quoting=csv.QUOTE_ALL)
             # Passer  le dictionnaire self.data  comme paramétre de la fonction  writerow()
             writer.writerow(self.data)
         return
@@ -86,7 +86,7 @@ def main():
     FOLDER_BASE = 'data/book/'
     # recuperer les informations du livre, on créant un objet (book) de type (Book) 
     # avec comme paramétre d'entrée l'URL de la page du livre
-    URL_BOOK = URL_SITE+'/catalogue/tipping-the-velvet_999/index.html'
+    URL_BOOK = URL_SITE+'/catalogue/tastes-like-fear-di-marnie-rome-3_742/index.html'
     book=Book(URL_BOOK)
     # exporter les données du livre vers un fichier csv
     book.saveData(FOLDER_BASE)
