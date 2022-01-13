@@ -1,4 +1,5 @@
-# OpenClassrooms - Formation Développeur d'application - Python (Projet 02)
+# OpenClassrooms - Formation Développeur d'application - Python 
+ ## Projet 2
  ## Contenu
 
   - [Obtenir le code source](#obtenir-le-code-source)
