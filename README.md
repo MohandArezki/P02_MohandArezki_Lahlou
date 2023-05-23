@@ -2048,5 +2048,5 @@ Ou vous pouvez cloner le référentiel avec la commande suivante :
 <p align="center">
   <img src="ressources/validation.png">
 </p>
-------------------------------------------------------------------------
+
 [Home](#contenu)
