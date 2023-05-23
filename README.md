@@ -2045,6 +2045,8 @@ Ou vous pouvez cloner le référentiel avec la commande suivante :
 
 54 directories, 1024 files\
 
-
+<p align="center">
+  <img src="ressources/validation.png">
+</p>
 ------------------------------------------------------------------------
 [Home](#contenu)
