@@ -1,5 +1,10 @@
-# OpenClassrooms - Formation Développeur d'application - Python 
- ## Projet 2
+# Projet 02
+## OpenClassrooms - Formation Développeur d'application - Python 
+## Objectifs pédagogiques
+ 1. Configurer un environnement Python
+ 2. Gérer les données à l'aide du processus ETL
+ 3. Utiliser le contrôle de version avec Git et GitHub
+ 4. Appliquer les bases de la programmation en Python
  ## Contenu
 
   - [Obtenir le code source](#obtenir-le-code-source)
